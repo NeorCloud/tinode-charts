@@ -89,7 +89,7 @@ spec:
               value: {{ .Values.webrtc.iceServersFile.path }}
             {{- end }}
             - name: "MYSQL_DSN"
-              value: "{{ .Values.mariadb.auth.username }}:{{ .Values.mariadb.auth.password }}@tcp({{ .Release.Name }}-mariadb)/{{ .Values.mariadb.auth.database }}"
+              value: "root:{{ .Values.mariadb.auth.rootPassword }}@tcp({{ .Release.Name }}-mariadb)/{{ .Values.store.database }}"
             - name: "RESET_DB"
               value: "{{ .Values.resetDB }}"
             - name: "UPGRADE_DB"

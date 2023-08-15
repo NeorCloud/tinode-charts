@@ -80,6 +80,7 @@ affinity: {}
 
 store:
   adapter: "mysql"
+  database: "tinode_db"
 pprof:
   url: "/pprof"
 push:
@@ -115,7 +116,7 @@ mariadb:
 
   auth:
     rootPassword: "tinode"
-    database: tinode
+    database: blank_db
     username: tinode
     password: "tinode"
   
