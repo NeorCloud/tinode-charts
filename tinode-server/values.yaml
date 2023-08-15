@@ -78,18 +78,33 @@ tolerations: []
 
 affinity: {}
 
-config:
-  # The database configuration. It will be ignored if mariadb.enabled is true
-  DB_ADAPTER: "mysql"
-  DB_HOST: "mysql"
-  DB_PORT: "3306"
-  DB_NAME: "tinode"
-  DB_USER: "tinode"
-  DB_PASS: ""
-  
-  AUTH_TOKEN_KEY: 'wfaY2RgF2S1OQI/ZlK+LS​rp1KB2jwAdGAIHQ7JZn+Kc=' # base64-encoded 32 random bytes used as salt for authentication tokens.
-  
-
+store:
+  adapter: "mysql"
+pprof:
+  url: "/pprof"
+push:
+  enabled: false
+  user: ""
+  authToken: ""
+fcm:
+  enabled: false
+  credFile:
+    data: ""
+    path: ""
+  includeAndroidNotification: false
+  apikey: "AIzaSyD6X4ULR-RUsobvs1zZ2bHdJuPz39q2tbQ"
+  appId: "1:114126160546:web:aca6ea2981feb81fb44dfb"
+  projectId: "tinode-1000"
+  senderId: "114126160546"
+  vapidKey: "BOgQVPOMzIMXUpsYGpbVkZoEBc0ifKY_f2kSU5DNDGYI6i6CoKqqxDd7w7PJ3FaGRBgVGJffldETumOx831jl58"
+  measurementId: "G-WNJDQR34L3"
+  webrtc:
+    enabled: false
+    iceServersFile:
+      data: ""
+      path: ""
+resetDB: false
+upgradeDB: false
 
 mariadb:
   enabled: true

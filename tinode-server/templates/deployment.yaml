@@ -47,6 +47,53 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          envs:
+            - name: "STORE_USE_ADAPTER"
+              value: "{{ .Values.store.adapter }}"
+            - name: "PPROF_URL"
+              value: "{{ .Values.pprof.url }}"
+            - name: "WAIT_FOR"
+              value: "{{ .Release.Name }}-mariadb:3306"
+            - name: "TNPG_PUSH_ENABLED"
+              value: "{{ .Values.push.enabled }}"
+            {{- if .Values.push.enabled }}
+            - name: "TNPG_USER"
+              value: "{{ .Values.push.user }}"
+            - name: "TNPG_AUTH_TOKEN"
+              value: "{{ .Values.push.authToken }}"
+            {{- end }}
+            - name: "FCM_PUSH_ENABLED"
+              value: "{{ .Values.fcm.enabled }}"
+            {{- if .Values.fcm.enabled }}
+            - name: "FCM_CRED_FILE"
+              value: {{ .Values.fcm.credFile.path }}
+            - name: "FCM_INCLUDE_ANDROID_NOTIFICATION"
+              value: "{{ .Values.fcm.includeAndroidNotification }}"
+            {{- end }}
+            - name: "FCM_API_KEY"
+              value: "{{ .Values.fcm.apiKey }}"
+            - name: "FCM_APP_ID"
+              value: "{{ .Values.fcm.appId }}"
+            - name: "FCM_PROJECT_ID"
+              value: "{{ .Values.fcm.projectId }}"
+            - name: "FCM_SENDER_ID"
+              value: "{{ .Values.fcm.senderId }}"
+            - name: "FCM_VAPID_KEY"
+              value: "{{ .Values.fcm.vapidKey }}"
+            - name: "FCM_MEASUREMENT_ID"
+              value: "{{ .Values.fcm.measurementId }}"
+            - name: "WEBRTC_ENABLED"
+              value: "{{ .Values.webrtc.enabled }}"
+            {{- if .Values.webrtc.enabled }}
+            - name: "WEBRTC_ICE_SERVERS_FILE"
+              value: {{ .Values.webrtc.iceServersFile.path }}
+            {{- end }}
+            - name: "MYSQL_DSN"
+              value: "{{ .Values.mariadb.auth.username }}@tcp({{ .Release.Name }}-mariadb:3306)/{{ .Values.mariadb.auth.database }}"
+            - name: "RESET_DB"
+              value: "{{ .Values.resetDB }}"
+            - name: "UPGRADE_DB"
+              value: "{{ .Values.upgradeDB }}"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
