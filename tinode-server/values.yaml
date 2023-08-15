@@ -22,16 +22,16 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext:
-  fsGroup: 1000
+podSecurityContext: {}
+  # fsGroup: 1000
 
-securityContext:
-  capabilities:
-    drop:
-    - ALL
-  readOnlyRootFilesystem: true
-  runAsNonRoot: true
-  runAsUser: 1000
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
 
 service:
   type: ClusterIP
@@ -98,11 +98,11 @@ fcm:
   senderId: "114126160546"
   vapidKey: "BOgQVPOMzIMXUpsYGpbVkZoEBc0ifKY_f2kSU5DNDGYI6i6CoKqqxDd7w7PJ3FaGRBgVGJffldETumOx831jl58"
   measurementId: "G-WNJDQR34L3"
-  webrtc:
-    enabled: false
-    iceServersFile:
-      data: ""
-      path: ""
+webrtc:
+  enabled: false
+  iceServersFile:
+    data: ""
+    path: ""
 resetDB: false
 upgradeDB: false
 
