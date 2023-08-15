@@ -47,7 +47,7 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          envs:
+          env:
             - name: "STORE_USE_ADAPTER"
               value: "{{ .Values.store.adapter }}"
             - name: "PPROF_URL"
